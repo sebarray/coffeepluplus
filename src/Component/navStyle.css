@@ -1,0 +1,20 @@
+ul {
+  list-style: none;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+a {
+  transition-property: color, text;
+  transition-duration: 0.5s;
+}
+a:hover {
+  text-decoration: underline;
+  color: rgb(209, 209, 209) !important;
+}
+@media (max-width: 400px) {
+  ul {
+    flex-direction: column;
+  }
+}
