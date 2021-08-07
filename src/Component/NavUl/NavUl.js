@@ -1,8 +1,8 @@
-import "./navStyle.css";
+import React from "react";
 
-const NavBar = () => {
+const NavUl = () => {
   return (
-    <ul className="d-flex p-0 justify-content-center container">
+    <>
       <li className=" p-3 text-center">
         <a href="#!" className="decoration-none text-white fs-3">
           Home
@@ -23,8 +23,8 @@ const NavBar = () => {
           Local
         </a>
       </li>
-    </ul>
+    </>
   );
 };
 
-export default NavBar;
+export default NavUl;
