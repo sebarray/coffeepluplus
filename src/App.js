@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="App">
       <header className=" d-flex justify-content-center flex-column">
-        <NavBar></NavBar>
+        <NavBar />
         <h1 className="text-center text-white">coffe++</h1>
-        <ItemListContainer greeting="bienvenidos a coffee ++"></ItemListContainer>
+        <ItemListContainer greeting="bienvenidos a coffee ++" />
       </header>
     </div>
   );

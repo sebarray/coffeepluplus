@@ -15,7 +15,7 @@ const NavUl = () => {
       </li>
       <li className=" p-3 text-center">
         <a href="#!" className="decoration-none text-white fs-3">
-          Nosotro
+          Nosotros
         </a>
       </li>
       <li className=" p-3 text-center ">
