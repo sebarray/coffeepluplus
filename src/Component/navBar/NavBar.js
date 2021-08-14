@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav className="mt-4">
       <ul className="d-flex p-0 justify-content-center container">
         <NavUl />
-        <CartWid />
+        <CartWidget />
       </ul>
     </nav>
   );

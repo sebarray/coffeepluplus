@@ -3,5 +3,6 @@
   font-family: "Barlow Condensed", sans-serif;
 }
 body {
-  background-image: url("./img/fondo.jpg");
+  background-image: url("./img/fondo.jpg") !important;
+  box-sizing: border-box;
 }
