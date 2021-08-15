@@ -18,3 +18,7 @@ a:hover {
     flex-direction: column;
   }
 }
+.navhw {
+  width: 20em !important;
+  height: 3em !important;
+}

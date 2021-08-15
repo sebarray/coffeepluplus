@@ -4,11 +4,11 @@ import NavUl from "../NavUl/NavUl";
 
 const NavBar = () => {
   return (
-    <nav className="mt-4">
-      <ul className="d-flex p-0 justify-content-center container">
-        <NavUl />
+    <nav className="navbar navbar-expand-lg navbar-light bg-light bg-dark fixed-top">
+      <NavUl />
+      <div className="d-inline-block me-5">
         <CartWidget />
-      </ul>
+      </div>
     </nav>
   );
 };

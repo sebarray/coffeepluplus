@@ -1,26 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
-
-const ItemCount = ({ stock }) => {
+import swal from "sweetalert";
+const ItemCount = ({ stock, initial, onAdd }) => {
   const [stockx, setStockx] = React.useState(0);
-  const [counters, setCounters] = React.useState(1);
+  const [counters, setCounters] = React.useState(0);
+
   useEffect(() => {
-    fetch("https://coffeego.herokuapp.com/coffee");
     setStockx(stockx + stock);
+    setCounters(counters + initial);
   }, []);
 
   const increment = () => {
-    if (counters < stockx) setCounters(counters + 1);
+    if (counters < stockx) {
+      setCounters(counters + 1);
+    } else {
+      if (stockx !== 0) {
+        swal({
+          title: "upps",
+          text: "es todo el stock que tenemos",
+          icon: "error",
+          timer: "2000",
+        });
+      } else {
+        swal({
+          title: "upps",
+          text: "no tenemos stock de este producto",
+          icon: "error",
+          timer: "2000",
+        });
+      }
+    }
   };
 
-  const decrement = () => {
+  onAdd = () => {
     if (counters !== 0) setCounters(counters - 1);
   };
 
   const minus = () => {
-    setStockx(stockx - counters);
-    setCounters(counters - counters);
+    if (stockx !== 0 && counters > 0) {
+      setStockx(stockx - counters);
+      setCounters(counters - counters);
+      swal({
+        title: "genial!",
+        text: "el producto se añadio al carrito",
+        icon: "success",
+        timer: "2000",
+      });
+    } else {
+      if (stockx === 0) {
+        swal({
+          title: "upps",
+          text: "no tenemos stock de este producto",
+          icon: "error",
+          timer: "2000",
+        });
+      }
+    }
+    if (counters === 0) {
+      swal({
+        title: "upps",
+        text: "icremente la cantidad del producto",
+        icon: "error",
+        timer: "2000",
+      });
+    }
   };
 
   return (
@@ -30,10 +74,10 @@ const ItemCount = ({ stock }) => {
           <FontAwesomeIcon size="2x" icon={faPlusCircle} color="#0D6EFD" />
         </div>
         <i className="fs-1 m-4 count">{counters}</i>
-        <div className="d-inline-flex" onClick={decrement}>
+        <div className="d-inline-flex" onClick={onAdd}>
           <FontAwesomeIcon size="2x" icon={faMinusCircle} color="#0D6EFD" />
         </div>
-        <p>{stockx}</p>
+        <div>{stockx}</div>
       </div>
       <button
         type="button"
