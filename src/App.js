@@ -2,13 +2,13 @@
 import ItemListContainer from "./Component/itemListContainer/itemListContainer";
 import NavBar from "./Component/navBar/NavBar";
 import Typist from "react-typist";
+import ContainerInfo from "./Component/ContainerInfo/ContainerInfo";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <header className="jutify-content-center ">
-        <div className="hdiv"></div>
+      <header className="jutify-content-center  pheader">
         <h1 className="text-white  text-center mt1">coffe++</h1>
         <Typist>
           <Typist.Delay ms={500} />
@@ -19,6 +19,7 @@ function App() {
         </Typist>
       </header>
       <ItemListContainer greeting="bienvenidos a coffee ++" />
+      <ContainerInfo />
     </div>
   );
 }

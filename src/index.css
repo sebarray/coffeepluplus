@@ -8,8 +8,8 @@ body {
 .fs1 {
   font-size: 3.5em;
 }
-.hdiv {
-  height: 6em;
+.pheader {
+  padding-top: 7em;
 }
 
 code {
