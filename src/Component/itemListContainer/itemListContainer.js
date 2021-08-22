@@ -17,7 +17,7 @@ const ItemListContainer = (props) => {
       <div className="container">
         <div className="row d-flex justify-content-between">
           {prod.map((product) => {
-            return <CardShop key={product.Img} data={product} />;
+            return <CardShop key={product.Id} data={product} />;
           })}
         </div>
       </div>

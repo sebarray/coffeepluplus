@@ -1,11 +1,11 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 const NavUl = () => {
   return (
     <div className="container-fluid">
-      <a className="navbar-brand text-white me-2 fs-2 " href="#!">
+      <NavLink className="navbar-brand text-white me-2 fs-2 " to="/">
         Cofee ++
-      </a>
+      </NavLink>
       <button
         className="navbar-toggler bg-light"
         type="button"
@@ -20,33 +20,33 @@ const NavUl = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a
+            <NavLink
               className="nav-link active fs-3 text-white"
               aria-current="page"
-              href="#!"
+              to="/"
             >
               HOME
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a class="nav-link fs-3 text-white" href="#!">
+            <NavLink className="nav-link fs-3 text-white" to="/product">
               PRODUCTOS
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link fs-3 text-white p-2" href="#!">
+            <NavLink className="nav-link fs-3 text-white p-2" to="/local">
               LOCAL
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a
+            <NavLink
               className="nav-link fs-3 text-white p-2"
-              href="#!"
-              tabindex="-1"
+              to="/nosotros"
+              tabIndex="-1"
               aria-disabled="true"
             >
               NOSOTROS
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

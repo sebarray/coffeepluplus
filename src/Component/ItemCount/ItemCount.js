@@ -7,9 +7,9 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   const [counters, setCounters] = React.useState(0);
 
   useEffect(() => {
-    setStockx(stockx + stock);
-    setCounters(counters + initial);
-  }, []);
+    setStockx(stock);
+    setCounters(initial);
+  }, [stock, initial]);
 
   const increment = () => {
     if (counters < stockx) {
