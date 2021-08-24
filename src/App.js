@@ -32,7 +32,7 @@ function App() {
           <Route path="/nosotros" component={Nosotros} />
           <Route path="/product" component={Product} />
           <Route path="/detail/:id" component={Detailcontainer} />
-          <Route path="/category/:catid" component={Category} />
+          <Route path="/category/:id" component={Category} />
         </Switch>
       </div>
     </Router>
