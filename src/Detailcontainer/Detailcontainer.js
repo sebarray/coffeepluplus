@@ -16,7 +16,7 @@ const Detailcontainer = ({ match }) => {
         .then((result) => setProduct(result))
         .catch((error) => console.log("error", error));
     }
-  });
+  }, [product.length, itemid]);
 
   return (
     <div>
