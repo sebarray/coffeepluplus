@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Itemdetail from "../Component/itemDetail/Itemdetail";
 const Detailcontainer = ({ match }) => {
   const [product, setProduct] = useState([]);
   let itemid = match.params.id;
+
   useEffect(() => {
-    axios(`https://coffeego.herokuapp.com/coffeeId/${itemid}`).then((res) =>
-      setProduct(res.data)
-    );
+    let requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    if (product.length < 1) {
+      fetch(`https://coffeego.herokuapp.com/coffeeId/${itemid}`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => setProduct(result))
+        .catch((error) => console.log("error", error));
+    }
   });
+
   return (
     <div>
       {product.map((data) => {

@@ -1,0 +1,6 @@
+.btncat {
+  cursor: pointer;
+}
+.btncat:hover {
+  color: #353c46;
+}

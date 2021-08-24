@@ -9,6 +9,7 @@ import Local from "./local/Local";
 import Nosotros from "./nosotros/Nosotros";
 import Home from "./home/Home";
 import Detailcontainer from "./Detailcontainer/Detailcontainer";
+import Category from "./category/Category";
 
 function App() {
   return (
@@ -27,10 +28,11 @@ function App() {
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/local" exact component={Local} />
-          <Route path="/nosotros" exact component={Nosotros} />
-          <Route path="/product" exact component={Product} />
-          <Route path="/detail/:id" exact component={Detailcontainer} />
+          <Route path="/local" component={Local} />
+          <Route path="/nosotros" component={Nosotros} />
+          <Route path="/product" component={Product} />
+          <Route path="/detail/:id" component={Detailcontainer} />
+          <Route path="/category/:catid" component={Category} />
         </Switch>
       </div>
     </Router>

@@ -77,7 +77,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         <div className="d-inline-flex" onClick={onAdd}>
           <FontAwesomeIcon size="2x" icon={faMinusCircle} color="#0D6EFD" />
         </div>
-        <div>{stockx}</div>
       </div>
       <button
         type="button"
