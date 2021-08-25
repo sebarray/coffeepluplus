@@ -1,6 +1,7 @@
 //import "./App.css";
 import NavBar from "./Component/navBar/NavBar";
 import Typist from "react-typist";
+import Cart from "./Component/Cart/Cart";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //views
@@ -33,6 +34,7 @@ function App() {
           <Route path="/product" component={Product} />
           <Route path="/detail/:id" component={Detailcontainer} />
           <Route path="/category/:id" component={Category} />
+          <Route path="/cart" component={Cart} />
         </Switch>
       </div>
     </Router>

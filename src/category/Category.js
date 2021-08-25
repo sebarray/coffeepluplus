@@ -13,7 +13,7 @@ const Category = ({ match }) => {
   return (
     <div>
       <div className="container">
-        <div className="row d-flex justify-content-between">
+        <div className="row d-flex justify-content-center">
           {prod.map((product) => {
             return <CardShop key={product.Id} data={product} />;
           })}
