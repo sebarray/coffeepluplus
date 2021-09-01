@@ -8,8 +8,8 @@ const CardShop = ({ data }) => {
         <img src={data.Img} className="card-img-top himg" alt="producto"></img>
       </Link>
       <div className="card-body hcard">
-        <h5 className="card-title text-center fs-2 ">{data.Name}</h5>
-        <h3>${data.Price}</h3>
+        <h3 className="text-center m-0">${data.Price}</h3>
+        <h5 className="card-title text-center fs-3 ">{data.Name}</h5>
       </div>
     </div>
   );

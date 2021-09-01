@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
+import { cartContext } from "../../contexCart/Context";
 
 const Itemdetail = ({ data }) => {
   const [stockx, setStockx] = useState(0);
   const [counters, setCounters] = useState(0);
   const [value, setValue] = useState(0);
+  const { addCart, itemCart } = useContext(cartContext);
+
   useEffect(() => {
     setStockx(data.Stock);
   }, [data.Stock]);
@@ -15,12 +18,28 @@ const Itemdetail = ({ data }) => {
   }, [value]);
 
   const onAdd = () => {
+    let index = itemCart.findIndex((c) => c.Id === data.Id);
+    if (index === -1) {
+      onAd();
+    } else if (itemCart[index].Stock >= counters + itemCart[index].Cuantity) {
+      onAd();
+    } else {
+      console.log(counters + itemCart[index].Cuantity);
+      swal({
+        title: "upps",
+        text: "nuestro stock es limitado revise su carrito",
+        icon: "error",
+        timer: "2000",
+      });
+    }
+  };
+
+  const onAd = () => {
     if (stockx !== 0 && counters > 0) {
       setValue(counters);
       setStockx(stockx - counters);
-
       setCounters(counters - counters);
-
+      addCart(data, counters);
       swal({
         title: "genial!",
         text: "el producto se añadio al carrito",
