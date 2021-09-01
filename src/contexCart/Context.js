@@ -45,6 +45,7 @@ export const CartProvider = ({ children }) => {
       SetCard(itemCart);
       Setcount(itemcountcart + 1);
     }
+    console.log(itemCart);
   };
 
   const clear = () => {
