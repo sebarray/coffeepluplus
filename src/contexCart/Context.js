@@ -38,16 +38,43 @@ export const CartProvider = ({ children }) => {
       Setcount(itemcountcart - 1);
     }
   };
+  const sum = (id) => {
+    let index = itemCart.findIndex((c) => c.Id === id);
+    if (itemCart[index].Cuantity !== 1) {
+      itemCart[index].Cuantity += 1;
+      SetCard(itemCart);
+      Setcount(itemcountcart + 1);
+    }
+  };
 
   const clear = () => {
     console.log("clear", itemCart);
+    Setcount(0);
     SetCard([]);
     console.log("clear", itemCart);
   };
 
+  const del = (producto) => {
+    let c = itemcountcart - producto.Cuantity;
+    Setcount(c);
+    let productoAEliminar = itemCart.find((x) => x.Id === producto.Id);
+    let carritoModificado = [...itemCart];
+    carritoModificado.splice(itemCart.indexOf(productoAEliminar), 1);
+    SetCard(carritoModificado);
+  };
+
   return (
     <cartContext.Provider
-      value={{ itemCart, SetCard, addCart, itemcountcart, desc, clear }}
+      value={{
+        itemCart,
+        SetCard,
+        addCart,
+        itemcountcart,
+        desc,
+        clear,
+        sum,
+        del,
+      }}
     >
       {children}
     </cartContext.Provider>
