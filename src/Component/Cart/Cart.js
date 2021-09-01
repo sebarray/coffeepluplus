@@ -4,8 +4,13 @@ import { cartContext } from "../../contexCart/Context";
 const Cart = () => {
   const { itemCart, desc, clear, sum, del } = useContext(cartContext);
   const [statecart, setcarts] = useState([]);
+  const [pricetotal, setprice] = useState(0);
   useEffect(() => {
     setcarts(itemCart);
+    let price = itemCart.reduce((acc, item) => {
+      return (acc += item.Price * item.Cuantity);
+    }, 0);
+    setprice(price);
   }, [itemCart]);
 
   return (
@@ -16,6 +21,7 @@ const Cart = () => {
           <Cartitem key={item.Id} data={item} desc={desc} sum={sum} del={del} />
         );
       })}
+      <h3>TOTAL:${pricetotal}</h3>
     </div>
   );
 };
