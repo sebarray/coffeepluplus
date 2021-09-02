@@ -4,8 +4,10 @@ import "./Cartitem.css";
 const Cartitem = ({ data, desc, sum, del }) => {
   const [cuantity, setcuantity] = useState(data.Cuantity);
   const decrement = () => {
-    if (cuantity !== 1) setcuantity(cuantity - 1);
-    desc(data.Id);
+    if (cuantity !== 1) {
+      setcuantity(cuantity - 1);
+      desc(data.Id);
+    }
   };
   const increment = () => {
     if (cuantity !== data.Stock) {

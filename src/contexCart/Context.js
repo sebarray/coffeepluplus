@@ -40,7 +40,7 @@ export const CartProvider = ({ children }) => {
   };
   const sum = (id) => {
     let index = itemCart.findIndex((c) => c.Id === id);
-    if (itemCart[index].Cuantity !== 1) {
+    if (itemCart[index].Cuantity !== 0) {
       itemCart[index].Cuantity += 1;
       SetCard(itemCart);
       Setcount(itemcountcart + 1);
