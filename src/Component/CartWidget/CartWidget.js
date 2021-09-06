@@ -10,8 +10,14 @@ const CartWidget = () => {
     <div>
       {itemcountcart !== 0 && (
         <Link to="/cart">
-          <span className="fs-1 text-white">{itemcountcart}</span>
-          <FontAwesomeIcon size="3x" icon={faCartPlus} color="white" />;
+          <span className="fs-1 text-white cartwd">{itemcountcart}</span>
+          <FontAwesomeIcon
+            size="3x"
+            icon={faCartPlus}
+            color="white"
+            className="cartwd"
+          />
+          ;
         </Link>
       )}
     </div>

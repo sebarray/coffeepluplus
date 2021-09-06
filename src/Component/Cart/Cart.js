@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import Cartitem from "./Cartitem/Cartitem";
 import { cartContext } from "../../contexCart/Context";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./cart.css";
 const Cart = () => {
   const { itemCart, desc, clear, sum, del } = useContext(cartContext);
   const [statecart, setcarts] = useState([]);
@@ -11,22 +14,27 @@ const Cart = () => {
   }, [itemCart]);
 
   return (
-    <div>
-      <button onClick={clear}>clear cart</button>
+    <div className="container m-5 p-5 ">
+      <h3 className="carticon fs-1">carrito </h3>
+
       {statecart.length !== 0 ? (
         statecart.map((item) => {
           return (
-            <Cartitem
-              key={item.Id}
-              data={item}
-              desc={desc}
-              sum={sum}
-              del={del}
-            />
+            <div className="row jutify-content-center d-flex">
+              <Cartitem
+                key={item.Id}
+                data={item}
+                desc={desc}
+                sum={sum}
+                del={del}
+              />
+            </div>
           );
         })
       ) : (
-        <Link to="/Product">No hay productos en el carrito</Link>
+        <Link className=" fs-1 text-center carticon" to="/Product">
+          No hay productos en el carrito
+        </Link>
       )}
       <h3>
         TOTAL:$
@@ -34,6 +42,10 @@ const Cart = () => {
           return (acc += item.Price * item.Cuantity);
         }, 0)}
       </h3>
+      <span onClick={clear} className="cp">
+        <FontAwesomeIcon size="2x" icon={faTrash} color="#0D6EFD" />
+        clear cart
+      </span>
     </div>
   );
 };
