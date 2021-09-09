@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Itemdetail from "../Component/itemDetail/Itemdetail";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 const Detailcontainer = ({ match }) => {
   const [product, setProduct] = useState([]);
   let itemid = match.params.id;
 
-  useEffect(() => {
-    let requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
+  const getdetail = async () => {
+    const dataf = [];
+    const docRef = doc(db, "products", itemid);
+    const docSnap = await getDoc(docRef);
 
-    if (product.length < 1) {
-      fetch(`https://coffeego.herokuapp.com/coffeeId/${itemid}`, requestOptions)
-        .then((response) => response.json())
-        .then((result) => setProduct(result))
-        .catch((error) => console.log("error", error));
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      dataf.push({ ...docSnap.data(), Id: itemid });
+      setProduct(dataf);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
     }
-  }, [product.length, itemid]);
+  };
+
+  useEffect(() => {
+    getdetail();
+  }, []);
 
   return (
     <div>

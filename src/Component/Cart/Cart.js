@@ -22,7 +22,7 @@ const Cart = () => {
           return (
             <div className="row jutify-content-center d-flex">
               <Cartitem
-                key={item.Id}
+                key={item.Img}
                 data={item}
                 desc={desc}
                 sum={sum}

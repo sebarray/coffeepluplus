@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Cartitem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,6 +8,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Cartitem = ({ data, desc, sum, del }) => {
+  useEffect(() => {
+    console.log("data:", data);
+  });
   const [cuantity, setcuantity] = useState(data.Cuantity);
   const decrement = () => {
     if (cuantity !== 1) {
