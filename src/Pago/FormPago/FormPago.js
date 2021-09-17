@@ -103,7 +103,7 @@ const FormPago = () => {
         ></input>
       </form>
       {ticketid !== "" && (
-        <h3 className="fs-2">tu ticket de compra es{ticketid}</h3>
+        <h3 className="fs-2">tu ticket de compra es {ticketid}</h3>
       )}
     </div>
   );
