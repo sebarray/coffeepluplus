@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
-import swal from "sweetalert";
+
 import { Link } from "react-router-dom";
 import { cartContext } from "../../contexCart/Context";
+import {
+  addok,
+  stockcero,
+  stocklimit,
+  stockincrement,
+  stockrev,
+} from "../../Alert/AlertSweet";
 
 const Itemdetail = ({ data }) => {
   const [stockx, setStockx] = useState(0);
@@ -13,9 +20,7 @@ const Itemdetail = ({ data }) => {
   useEffect(() => {
     setStockx(data.Stock);
   }, [data.Stock]);
-  useEffect(() => {
-    console.log("el estado interno es :", value);
-  }, [value]);
+  useEffect(() => {}, [value]);
 
   const onAdd = () => {
     let index = itemCart.findIndex((c) => c.Id === data.Id);
@@ -24,13 +29,7 @@ const Itemdetail = ({ data }) => {
     } else if (itemCart[index].Stock >= counters + itemCart[index].Cuantity) {
       onAd();
     } else {
-      console.log(counters + itemCart[index].Cuantity);
-      swal({
-        title: "upps",
-        text: "nuestro stock es limitado revise su carrito",
-        icon: "error",
-        timer: "2000",
-      });
+      stockrev();
     }
   };
 
@@ -40,29 +39,14 @@ const Itemdetail = ({ data }) => {
       setStockx(stockx - counters);
       setCounters(counters - counters);
       addCart(data, counters);
-      swal({
-        title: "genial!",
-        text: "el producto se añadio al carrito",
-        icon: "success",
-        timer: "2000",
-      });
+      addok();
     } else {
       if (stockx === 0) {
-        swal({
-          title: "upps",
-          text: "no tenemos stock de este producto",
-          icon: "error",
-          timer: "2000",
-        });
+        stockcero();
       }
     }
     if (counters === 0) {
-      swal({
-        title: "upps",
-        text: "icremente la cantidad del producto",
-        icon: "error",
-        timer: "2000",
-      });
+      stockincrement();
     }
   };
 
@@ -71,19 +55,9 @@ const Itemdetail = ({ data }) => {
       setCounters(counters + 1);
     } else {
       if (stockx !== 0) {
-        swal({
-          title: "upps",
-          text: "es todo el stock que tenemos",
-          icon: "error",
-          timer: "2000",
-        });
+        stocklimit();
       } else {
-        swal({
-          title: "upps",
-          text: "no tenemos stock de este producto",
-          icon: "error",
-          timer: "2000",
-        });
+        stockcero();
       }
     }
   };
@@ -93,10 +67,14 @@ const Itemdetail = ({ data }) => {
   };
 
   return (
-    <div className="row">
-      <img src={data.Img} className="w-50 h-50" alt="producto"></img>
+    <div className="row mt-5">
+      <img
+        src={data.Img}
+        className="w-50 h-50"
+        alt="producto col-12 col-xxl-2 "
+      ></img>
 
-      <div className=" flex-column w-25 pt-5 mt-5">
+      <div className=" flex-column pt-5 mt-5 col-12 col-xxl-2 ">
         <h2 className="fs-1">{data.Name}</h2>
         <h3 className="fs-3">{data.Description}</h3>
         <h3 className="fs-3">Stock: {stockx}</h3>

@@ -26,8 +26,6 @@ export const CartProvider = ({ children }) => {
     }
 
     Setcount(itemcountcart + cantidad);
-    console.log("cantidad", itemcountcart);
-    console.log("cart", itemCart);
   };
 
   const desc = (id) => {
@@ -45,14 +43,11 @@ export const CartProvider = ({ children }) => {
       SetCard(itemCart);
       Setcount(itemcountcart + 1);
     }
-    console.log(itemCart);
   };
 
   const clear = () => {
-    console.log("clear", itemCart);
     Setcount(0);
     SetCard([]);
-    console.log("clear", itemCart);
   };
 
   const del = (producto) => {

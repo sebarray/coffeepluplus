@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 
-const ItemCount = ({ stock, initial, onAdd, minus, increment, counters }) => {
+const ItemCount = ({ onAdd, minus, increment, counters }) => {
   return (
     <div className="d-inline-flex  flex-column">
       <div className="d-inline-flex justify-content-center">

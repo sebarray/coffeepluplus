@@ -14,13 +14,13 @@ const Cart = () => {
   }, [itemCart]);
 
   return (
-    <div className="container m-5 p-5 ">
-      <h3 className="carticon fs-1">carrito </h3>
+    <div className="container mt-5 pt-5 justify-content-center">
+      <h3 className=" text-center fs-1  mt-5 pt-5">carrito </h3>
 
       {statecart.length !== 0 ? (
         statecart.map((item) => {
           return (
-            <div className="row jutify-content-center d-flex">
+            <div className="row ">
               <Cartitem
                 key={item.Img}
                 data={item}
@@ -46,6 +46,9 @@ const Cart = () => {
         <FontAwesomeIcon size="2x" icon={faTrash} color="#0D6EFD" />
         clear cart
       </span>
+      <Link className="btn btn-primary" to="/pago">
+        Comprar
+      </Link>
     </div>
   );
 };

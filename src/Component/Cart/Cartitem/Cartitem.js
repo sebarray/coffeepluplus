@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Cartitem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,9 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Cartitem = ({ data, desc, sum, del }) => {
-  useEffect(() => {
-    console.log("data:", data);
-  });
   const [cuantity, setcuantity] = useState(data.Cuantity);
   const decrement = () => {
     if (cuantity !== 1) {
@@ -29,11 +26,10 @@ const Cartitem = ({ data, desc, sum, del }) => {
   };
 
   return (
-    <div className="d-inline-flex">
-      <h3 className="fs-1 m-0 p-0 ms-4">{data.Name}</h3>
-      <h3 className="fs-1 m-0 p-0 ms-4">{data.Price}$ c/u</h3>
-      <h3 className="fs-1 m-0 p-0 ms-4">{cuantity}</h3>
-      <img src={data.Img} alt={data.Name} className="imgcart"></img>
+    <div className="d-flex">
+      <h3 className="fs-1 m-0 p-0 ms-2">{data.Name}</h3>
+      <h3 className="fs-1 m-0 p-0 ms-2">{data.Price}$ c/u</h3>
+      <h3 className="fs-1 m-0 p-0 ms-2">{cuantity}</h3>
       <span className="btn cp" onClick={increment}>
         <FontAwesomeIcon size="2x" icon={faPlusCircle} color="#0D6EFD" />
       </span>
@@ -43,6 +39,7 @@ const Cartitem = ({ data, desc, sum, del }) => {
       <span className="btn cp" onClick={cls}>
         <FontAwesomeIcon size="2x" icon={faTrash} color="#0D6EFD" />
       </span>
+      <img src={data.Img} alt={data.Name} className="imgcart"></img>
     </div>
   );
 };

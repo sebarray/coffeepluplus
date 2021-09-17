@@ -19,10 +19,10 @@ const Category = ({ match }) => {
 
   useEffect(() => {
     getcat();
-  }, [id]);
+  });
   return (
-    <div>
-      <div className="container">
+    <div className="m-5 p-5">
+      <div className="container ">
         <div className="row d-flex justify-content-center">
           {prod.map((product) => {
             return <CardShop key={product.Id} data={product} />;

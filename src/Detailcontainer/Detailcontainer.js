@@ -6,27 +6,24 @@ const Detailcontainer = ({ match }) => {
   const [product, setProduct] = useState([]);
   let itemid = match.params.id;
 
-  const getdetail = async () => {
-    const dataf = [];
-    const docRef = doc(db, "products", itemid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      dataf.push({ ...docSnap.data(), Id: itemid });
-      setProduct(dataf);
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  };
-
   useEffect(() => {
+    const getdetail = async () => {
+      const dataf = [];
+      const docRef = doc(db, "products", itemid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        dataf.push({ ...docSnap.data(), Id: itemid });
+        setProduct(dataf);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    };
     getdetail();
-  }, []);
+  }, [itemid]);
 
   return (
-    <div>
+    <div className="m-5 p-5">
       {product.map((data) => {
         return <Itemdetail key={data.Id} data={data} />;
       })}
