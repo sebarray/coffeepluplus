@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import Login from "../../Component/Login/Login";
 import { db } from "../../firebase";
+
 const FormPago = () => {
   const { itemCart, clear, login } = useContext(cartContext);
   const [items, Setitems] = useState([]);
@@ -105,15 +106,18 @@ const FormPago = () => {
           name="celular"
           className="m-3"
         ></input>
-        <input
-          type="submit"
-          placeholder="submit"
-          onClick={ticket}
-          className="btn btn-primary"
-          value="finalizar"
-        ></input>
       </form>
       <Login />
+      <button
+        type="submit"
+        placeholder="submit"
+        onClick={ticket}
+        className="btn btn-primary m-3"
+        value="finalizar"
+      >
+        finalizar compra
+      </button>
+
       {ticketid !== "" && (
         <h3 className="fs-2">tu ticket de compra es {ticketid}</h3>
       )}
