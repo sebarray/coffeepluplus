@@ -8,9 +8,10 @@ import {
   doc,
   Timestamp,
 } from "firebase/firestore";
+import Login from "../../Component/Login/Login";
 import { db } from "../../firebase";
 const FormPago = () => {
-  const { itemCart, clear } = useContext(cartContext);
+  const { itemCart, clear, login } = useContext(cartContext);
   const [items, Setitems] = useState([]);
   const [pricetotal, setPrice] = useState([]);
   const [ticketid, Settickedid] = useState("");
@@ -36,22 +37,32 @@ const FormPago = () => {
 
   const ticket = async (e) => {
     e.preventDefault();
+    let obj;
     let f = document.getElementById("formpago");
     let nombre = f.nombre.value;
     let celular = f.celular.value;
     let email = f.email.value;
-    if (nombre !== "" && email !== "" && celular !== "") {
+    if ((nombre !== "" && email !== "" && celular !== "") || login !== {}) {
       let buy = new buyer(nombre, celular, email, items);
+      login !== {}
+        ? (obj = {
+            email: login.email,
+            nombre: login.name,
+            items: items,
+            price: pricetotal,
+            time: Timestamp.fromDate(new Date()),
+          })
+        : (obj = {
+            nombre: buy.nombre,
+            email: buy.email,
+            celular: buy.celular,
+            items: items,
+            price: pricetotal,
+            time: Timestamp.fromDate(new Date()),
+          });
 
       try {
-        const docRef = await addDoc(collection(db, "compras"), {
-          nombre: buy.nombre,
-          email: buy.email,
-          celular: buy.celular,
-          items: items,
-          price: pricetotal,
-          time: Timestamp.fromDate(new Date()),
-        });
+        const docRef = await addDoc(collection(db, "compras"), obj);
 
         itemCart.forEach(async (item) => {
           const washingtonRef = doc(db, "products", item.Id);
@@ -102,6 +113,7 @@ const FormPago = () => {
           value="finalizar"
         ></input>
       </form>
+      <Login />
       {ticketid !== "" && (
         <h3 className="fs-2">tu ticket de compra es {ticketid}</h3>
       )}

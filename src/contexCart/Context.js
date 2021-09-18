@@ -5,6 +5,7 @@ export const cartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [itemCart, SetCard] = useState([]);
   const [itemcountcart, Setcount] = useState(0);
+  const [login, Setlogin] = useState({});
 
   const addCart = (obj, cantidad) => {
     const icart = new cartObj(
@@ -24,7 +25,6 @@ export const CartProvider = ({ children }) => {
       itemCart.push(icart);
       SetCard(itemCart);
     }
-
     Setcount(itemcountcart + cantidad);
   };
 
@@ -70,6 +70,8 @@ export const CartProvider = ({ children }) => {
         clear,
         sum,
         del,
+        login,
+        Setlogin,
       }}
     >
       {children}

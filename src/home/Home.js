@@ -4,7 +4,7 @@ import ContainerInfo from "../Component/ContainerInfo/ContainerInfo";
 const Home = () => {
   return (
     <div>
-      <header className="jutify-content-center  pheader">
+      <header className="jutify-content-center  pheader mb-5 ">
         <h1 className="text-white  text-center mt1">coffe++</h1>
         <Typist>
           <Typist.Delay ms={500} />
@@ -14,6 +14,7 @@ const Home = () => {
           </h3>
         </Typist>
       </header>
+      <h3 className=" text-center m-5 fs-2">un poco de nosotros</h3>
       <ContainerInfo />
     </div>
   );

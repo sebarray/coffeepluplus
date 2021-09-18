@@ -1,13 +1,17 @@
 import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
 const NavUl = () => {
   return (
     <div className="container-fluid">
-      <NavLink className="navbar-brand text-white me-2 fs-2  " to="/">
+      <NavLink className="navbar-brand text-white me-2 fs-2 order-2   " to="/">
         Cofee ++
       </NavLink>
+
+      <CartWidget className="order-1 order-md-1" />
+
       <button
-        className="navbar-toggler bg-light"
+        className="navbar-toggler bg-light order-3 order-md-2"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNav"
