@@ -14,15 +14,15 @@ const Cart = () => {
   }, [itemCart]);
 
   return (
-    <div className="container mt-5 pt-5 justify-content-center">
+    <div className="container mt-5 pt-5 ">
       <h3 className=" text-center fs-1  mt-5 pt-5">carrito </h3>
 
       {statecart.length !== 0 ? (
         statecart.map((item) => {
           return (
-            <div className="row ">
+            <div className="row " key={item.Id}>
               <Cartitem
-                key={item.Img}
+                key={item.Id}
                 data={item}
                 desc={desc}
                 sum={sum}
@@ -36,19 +36,21 @@ const Cart = () => {
           No hay productos en el carrito
         </Link>
       )}
-      <h3>
-        TOTAL:$
-        {statecart.reduce((acc, item) => {
-          return (acc += item.Price * item.Cuantity);
-        }, 0)}
-      </h3>
-      <span onClick={clear} className="cp">
-        <FontAwesomeIcon size="2x" icon={faTrash} color="#0D6EFD" />
-        clear cart
-      </span>
-      <Link className="btn btn-primary" to="/pago">
-        Comprar
-      </Link>
+      <div className=" d-inline-flex flex-column ">
+        <h3 className=" m-2">
+          TOTAL:$
+          {statecart.reduce((acc, item) => {
+            return (acc += item.Price * item.Cuantity);
+          }, 0)}
+        </h3>
+        <span onClick={clear} className="cp m-2">
+          <FontAwesomeIcon size="2x" icon={faTrash} color="#0D6EFD" />
+          clear cart
+        </span>
+        <Link className="btn btn-primary m-2" to="/pago">
+          Comprar
+        </Link>
+      </div>
     </div>
   );
 };

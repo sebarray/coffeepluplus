@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import CardShop from "../Component/CardShop/CardShop";
+import CardShop from "../../Component/CardShop/CardShop";
 import { collection, query, getDocs, where } from "firebase/firestore";
-import { db } from "../firebase";
-const Category = ({ match }) => {
+import { db } from "../../firebase";
+const Dest = () => {
   const [prod, setProduct] = useState([]);
-  const id = match.params.id;
 
   useEffect(() => {
     const getcat = async () => {
       const dataf = [];
-      const q = query(collection(db, "products"), where("Cat", "==", id));
+      const q = query(collection(db, "products"), where("dest", "==", true));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
@@ -18,9 +17,10 @@ const Category = ({ match }) => {
       setProduct(dataf);
     };
     getcat();
-  }, [id]);
+  }, [setProduct]);
   return (
     <div className="m-5 p-5">
+      <h3 className="text-center">Productos destacados</h3>
       <div className="container ">
         <div className="row d-flex justify-content-center">
           {prod.map((product) => {
@@ -32,4 +32,4 @@ const Category = ({ match }) => {
   );
 };
 
-export default Category;
+export default Dest;

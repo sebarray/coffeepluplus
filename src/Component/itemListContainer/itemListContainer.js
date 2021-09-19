@@ -9,18 +9,18 @@ const ItemListContainer = (props) => {
   const [prod, setProd] = useState([]);
   const [load, setLoad] = useState(true);
 
-  const getproducts = async () => {
-    const dataf = [];
-    const q = query(collection(db, "products"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      dataf.push({ ...doc.data(), Id: doc.id });
-    });
-    setProd(dataf);
-    setLoad(false);
-  };
   useEffect(() => {
+    const getproducts = async () => {
+      const dataf = [];
+      const q = query(collection(db, "products"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        dataf.push({ ...doc.data(), Id: doc.id });
+      });
+      setProd(dataf);
+      setLoad(false);
+    };
     getproducts();
   }, []);
 

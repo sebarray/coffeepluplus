@@ -1,6 +1,7 @@
 import React from "react";
 import Typist from "react-typist";
 import ContainerInfo from "../Component/ContainerInfo/ContainerInfo";
+import Dest from "./destacados/dest";
 const Home = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const Home = () => {
       </header>
       <h3 className=" text-center m-5 fs-2">un poco de nosotros</h3>
       <ContainerInfo />
+      <Dest />
     </div>
   );
 };

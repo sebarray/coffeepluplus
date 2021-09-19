@@ -48,3 +48,26 @@ export const compraok = () => {
     icon: "success",
   });
 };
+
+export const mailerr = () => {
+  swal({
+    title: "upps",
+    text: "verifique que su ambos email sean iguales",
+    icon: "error",
+  });
+};
+export const cartnull = () => {
+  swal({
+    title: "upps",
+    text: "sucarrito esta vacio",
+    icon: "error",
+  });
+};
+
+export const logerr = () => {
+  swal({
+    title: "upps",
+    text: "elija una aopcion de logueo",
+    icon: "error",
+  });
+};

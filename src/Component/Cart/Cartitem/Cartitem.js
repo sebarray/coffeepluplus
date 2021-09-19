@@ -26,7 +26,7 @@ const Cartitem = ({ data, desc, sum, del }) => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex justify-content-center m-3">
       <h3 className="fs-1 m-0 p-0 ms-2">{data.Name}</h3>
       <h3 className="fs-1 m-0 p-0 ms-2">{data.Price}$ c/u</h3>
       <h3 className="fs-1 m-0 p-0 ms-2">{cuantity}</h3>
