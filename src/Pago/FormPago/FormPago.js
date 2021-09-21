@@ -17,6 +17,7 @@ const FormPago = () => {
   const [items, Setitems] = useState([]);
   const [pricetotal, setPrice] = useState([]);
   const [ticketid, Settickedid] = useState("");
+
   useEffect(() => {
     itemCart.forEach((item) => {
       items.push({
@@ -48,22 +49,26 @@ const FormPago = () => {
       let emailx2 = f.emailx2.value;
       if ((nombre !== "" && email !== "" && celular !== "") || login !== {}) {
         let buy = new buyer(nombre, celular, email, items);
-        login !== {}
-          ? (obj = {
-              email: login.email,
-              nombre: login.name,
-              items: items,
-              price: pricetotal,
-              time: Timestamp.fromDate(new Date()),
-            })
-          : (obj = {
-              nombre: buy.nombre,
-              email: buy.email,
-              celular: buy.celular,
-              items: items,
-              price: pricetotal,
-              time: Timestamp.fromDate(new Date()),
-            });
+        if (email === "") {
+          obj = {
+            email: login.email,
+            nombre: login.name,
+            items: items,
+            price: pricetotal,
+            time: Timestamp.fromDate(new Date()),
+            state: "preparacion",
+          };
+        } else {
+          obj = {
+            nombre: buy.nombre,
+            email: buy.email,
+            celular: buy.celular,
+            items: items,
+            price: pricetotal,
+            time: Timestamp.fromDate(new Date()),
+            state: "preparacion",
+          };
+        }
         if (buy.email !== emailx2) {
           mailerr();
           return;
@@ -138,9 +143,7 @@ const FormPago = () => {
         finalizar compra
       </button>
       {ticketid !== "" && (
-        <h3 className="fs-2">
-          {login.name.length < 1 && login.name}tu ticket de compra es {ticketid}
-        </h3>
+        <h3 className="fs-2">su ticket de compra es {ticketid}</h3>
       )}
     </div>
   );
